@@ -37,74 +37,37 @@ router.get('/', function(req,res) {
    res.send(candies[i]);
  });
 
-// bikeRouter.post('/', function(req, res) {
-//   // CREATE
-//   console.log("This is a post request");
-//   res.send("Post request to /bicycles");
-// });
+ router.post('/', function(req, res) {
+   // CREATE
+   console.log("This is a post request");
+   var newId = candies.length + 1;
+   var newCandy ={id:newId, name: "Jelly Belly", color:"Orange"};
+   candies.push(newCandy);
+   res.send(newCandy);
+ });
 
-// bikeRouter.get('/:id/edit', function(req, res) {
-//   // EDIT - Typically Displays an HTML Form
-//   res.send("edit bike form");
-// });
+ router.put('/:id/edit', function(req, res) {
+   // EDIT - Typically Displays an HTML Form
+	var editId = req.params.id;
+	 editId = parseInt(editId) - 1 ;
+	 console.log("this page edits");
+	var editCandy = {id: editId + 1,name: "Chocolate", color:"Brown"};
+	candies[editId] = editCandy;
+   res.send(candies[editId]);
+ });
 
-// bikeRouter.put('/:id', function(req, res) {
-//   // UPDATE
-// });
-
-// bikeRouter.delete('/:id', function(req, res) {
+ router.delete('/:id', function(req, res) {
 //   // DELETE
-// });
+	var deleteId = req.params.id;
+	 deleteId = parseInt(deleteId) - 1 ;
+	 console.log("this page deletes");
+	 candies[deleteId] = null;
+	 res.send({message: "deleted"});
+ });
 
-
-
-
-
-
-
-
-
-// Fill out the rest of the routes here
 
 module.exports = router;
 
-
-
-
-
-
-
-
-// bikeRouter.get('/new', function(req, res) {
-// 	console.log("bike form");
-// 	res.send("bike form");
-//   // NEW - Typically Displays an HTML Form
-// });
-
-// bikeRouter.get('/:id', function(req, res) {
-//   // SHOW
-//   console.log("single bike");
-//   res.send("single bike");
-// });
-
-// bikeRouter.post('/', function(req, res) {
-//   // CREATE
-//   console.log("This is a post request");
-//   res.send("Post request to /bicycles");
-// });
-
-// bikeRouter.get('/:id/edit', function(req, res) {
-//   // EDIT - Typically Displays an HTML Form
-//   res.send("edit bike form");
-// });
-
-// bikeRouter.put('/:id', function(req, res) {
-//   // UPDATE
-// });
-
-// bikeRouter.delete('/:id', function(req, res) {
-//   // DELETE
-// });
 
 
 
