@@ -1,12 +1,13 @@
-//Did you use npm install to
-//add all these packages
-//to our project?
+'use strict'
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 
+
 // How do we 'require' the candyRouter file?
-var candyRouter;
+var candyRouter = require('./candyRouter');
+
+app.use("/candies", candyRouter);
 
 app.use(bodyParser.json());
 
@@ -15,3 +16,5 @@ app.use(bodyParser.json());
 //Hint: you need app.use
 
 app.listen(3000);
+
+
