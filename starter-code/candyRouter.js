@@ -16,6 +16,7 @@ var candies = [{
 //in order to pass our first test?
 
 
+
 router.get('/', function(req,res) {
 	res.send(candies);
 	// What would go here? 
@@ -46,15 +47,18 @@ router.get('/', function(req,res) {
    res.send(newCandy);
  });
 
- router.put('/:id/edit', function(req, res) {
+ router.put('/:id', function(req, res) {
    // EDIT - Typically Displays an HTML Form
 	var editId = req.params.id;
 	 editId = parseInt(editId) - 1 ;
-	 console.log("this page edits");
-	var editCandy = {id: editId + 1,name: "Chocolate", color:"Brown"};
+	 console.log(editId);
+	var editCandy = req.body;
+	console.log(editCandy);
 	candies[editId] = editCandy;
    res.send(candies[editId]);
  });
+
+
 
  router.delete('/:id', function(req, res) {
 //   // DELETE
